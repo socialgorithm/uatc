@@ -1,0 +1,6 @@
+{
+    "ignore": ["**/*.test.ts", "**/*.spec.ts", ".git", "node_modules"],
+    "watch": ["src"],
+    "exec": "npm run dev -- --mode running -f \"node ../tic-tac-toe-player/run_player\" -n 3",
+    "ext": "ts"
+}

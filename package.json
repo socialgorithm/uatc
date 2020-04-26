@@ -1,0 +1,43 @@
+{
+  "name": "@socialgorithm/uatc",
+  "version": "0.0.1",
+  "description": "Socialgorithm Tournament Test Client",
+  "main": "dist/uatc.js",
+  "scripts": {
+    "start": "node dist/uatc.js",
+    "start:dev": "nodemon",
+    "debug": "npm run build && node --inspect-brk dist/uatc.js",
+    "dev": "tsc && ts-node -r tsconfig-paths/register --files src/uatc.ts",
+    "start:opts": "tsc && ts-node bin/uatc.js",
+    "build": "tsc",
+    "build:watch": "tsc -w",
+    "test": "mocha -r ts-node/register src/**/*.spec.ts && npm run lint && npm run build",
+    "lint": "tslint -p tsconfig.json -t stylish 'src/**/*.ts'",
+    "lint:fix": "tslint -p tsconfig.json -t stylish --fix 'src/**/*.ts'"
+  },
+  "keywords": [
+    "socialgorithm"
+  ],
+  "author": "Socialgorithm",
+  "license": "AGPL-3.0-or-later",
+  "devDependencies": {
+    "@socialgorithm/model": "^9.0.0",
+    "@types/command-line-args": "^5.0.0",
+    "@types/mocha": "^7.0.2",
+    "@types/node": "^13.13.2",
+    "@types/socket.io-client": "^1.4.32",
+    "@types/uuid": "^7.0.3",
+    "nodemon": "^2.0.3",
+    "ts-node": "^8.9.1",
+    "tsconfig-paths": "^3.9.0",
+    "tslint": "^6.1.1",
+    "typedoc": "^0.16.11",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "commander": "^5.1.0",
+    "debug": "^4.1.1",
+    "socket.io-client": "^2.3.0",
+    "uuid": "^7.0.3"
+  }
+}
