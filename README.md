@@ -64,11 +64,6 @@ Config:
 			location: '../tic-tac-toe-game-server',
 			startupCommand: 'node ./dist/index.js',
 			expectedPort: 5433
-		},
-		userInterface: {
-			location: '../ui',
-			startupCommand: 'node ./node_modules/serve/bin/serve.js -s -l 3000 build',
-			expectedPort: 3000
 		}
 	}
 }
