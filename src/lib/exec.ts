@@ -1,13 +1,12 @@
 import * as cp from "child_process";
-import {ChildProcess} from "child_process";
+import {ChildProcess, SpawnOptionsWithoutStdio} from "child_process";
 
-/**
- * Execute a file with a given executable
- * @param cmd string to execute
- * @returns {*}
- */
-export const exec = (cmd: string, options: string[]): ChildProcess => {
-	const childProcess = cp.spawn(cmd, options, {shell: true});
+export const spawn = (cmd: string, options: string[], config: SpawnOptionsWithoutStdio = {}): ChildProcess => {
+	return cp.spawn(cmd, options, {shell: true, ...config});
+};
+
+export const spawnAndMonitor = (cmd: string, options: string[], config: SpawnOptionsWithoutStdio = {}): ChildProcess => {
+	const childProcess = cp.spawn(cmd, options, {shell: true, ...config});
 	childProcess.stdout.setEncoding("utf8");
 
 	childProcess.stderr.on("data", (data: string) => {
@@ -15,4 +14,17 @@ export const exec = (cmd: string, options: string[]): ChildProcess => {
 	});
 
 	return childProcess;
+};
+
+export const exec = (cmd: string): Promise<any> => {
+	return new Promise((resolve, reject) => {
+		cp.exec(cmd, undefined, (error, stdout, stderr) => {
+			if (error) {
+				reject(error);
+				return;
+			}
+			resolve(stdout);
+
+		});
+	});
 };

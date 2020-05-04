@@ -7,13 +7,27 @@ export interface PlayersConfig {
 	name: string;
 }
 
+export interface ServerConfig {
+	location: string;
+	startupCommand: string;
+	expectedPort: number;
+}
+
+export interface ServersConfig {
+	[key: string]: ServerConfig;
+	tournament: ServerConfig;
+	game: ServerConfig;
+	userInterface: ServerConfig;
+}
+
 export interface UATCConfig {
 	playTournament: {
 		players: PlayersConfig[];
 		tournamentServerAddress: string;
 		autoplay: boolean;
 		tournamentSettings: object;
-	}
+	},
+	servers: ServersConfig;
 }
 
 const DEFAULT_CONFIG: UATCConfig = {
@@ -32,6 +46,23 @@ const DEFAULT_CONFIG: UATCConfig = {
 			numberOfGames: 50,
 			type: "DoubleElimination",
 			autoPlay: false
+		}
+	},
+	servers: {
+		tournament: {
+			location: '../tournament-server',
+			startupCommand: 'node ./dist/index.js',
+			expectedPort: 3141
+		},
+		game: {
+			location: '../tic-tac-toe-game-server',
+			startupCommand: 'node ./dist/index.js',
+			expectedPort: 5433
+		},
+		userInterface: {
+			location: '../ui',
+			startupCommand: 'node ./node_modules/serve/bin/serve.js -s -l 3000 build',
+			expectedPort: 3000
 		}
 	}
 };

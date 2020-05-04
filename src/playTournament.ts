@@ -6,7 +6,7 @@ const io = require('socket.io-client');
 const debug = require("debug")("sg:uatc:playTournament");
 
 import {loadConfig, PlayersConfig} from "./config";
-import {exec} from "./lib/exec";
+import {spawnAndMonitor} from "./lib/exec";
 import {isWindows} from "./lib/isWindows";
 
 interface PlayConfig {
@@ -125,7 +125,8 @@ const connectPlayers = async (players: PlayersConfig[], token: string, tournamen
 
 const connectPlayer = (file: string, name: string, token: string, tournamentAddress: string) => {
 	const command = isWindows() ? 'uabc.cmd' : 'uabc';
-	const playerProcess = exec(command, [`--token "${name}"`, `--lobby "${token}"`, `--file "${file}"`, `--host "${tournamentAddress}"`, `--verbose`]);
+	const playerProcess = spawnAndMonitor(command, [`--token "${name}"`, `--lobby "${token}"`, `--file "${file}"`, `--host "${tournamentAddress}"`, `--verbose`]);
+	playerProcess.stdout.setEncoding("utf8");
 	const logFile = path.resolve(process.cwd(), `./logs/${name}.log`);
 	const logStream = fs.createWriteStream(logFile, {flags:'a'});
 
