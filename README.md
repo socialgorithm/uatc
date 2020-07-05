@@ -9,11 +9,13 @@ To install and run this util clone this repo and:
 
 ```bash
 npm i
-npm build
-node ./dist/uabc.js help
+npm run build
+node ./dist/uatc.js help
 ```
 
-This expects that [@socialgorithm/uabc](https://github.com/socialgorithm/uabc) is installed globally. 
+This expects that [@socialgorithm/uabc](https://github.com/socialgorithm/uabc) is installed globally.
+
+You will also need a player(s) that is ready to connect and play games.   
 
 ### Commands
 
