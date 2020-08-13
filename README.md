@@ -1,9 +1,18 @@
 # UATC - Ultimate Algorithm Test Client
-_*note*: This is a work in progress_
 
 This is a small test package for testing the [socialgorithm](https://github.com/socialgorithm) platform.
 
 ## Getting started
+
+## Running from NPX executable
+
+This is the quickest way to get started:
+
+```bash
+npx @socialgorithm/uatc help
+```
+
+## Building and running from Sources
 
 To install and run this util clone this repo and:
 
