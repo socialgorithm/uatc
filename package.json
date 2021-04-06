@@ -38,7 +38,7 @@
     "commander": "^5.1.0",
     "debug": "^4.1.1",
     "socket.io-client": "^2.3.0",
-    "systeminformation": "^4.24.1",
+    "systeminformation": "^5.6.4",
     "tcp-port-used": "^1.0.1",
     "uuid": "^7.0.3"
   }
