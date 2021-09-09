@@ -17,7 +17,7 @@ export interface ServersConfig {
 	[key: string]: ServerConfig;
 	tournament: ServerConfig;
 	game: ServerConfig;
-	userInterface: ServerConfig;
+	userInterface?: ServerConfig;
 }
 
 export interface UATCConfig {
